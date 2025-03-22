@@ -39,6 +39,8 @@ fn main() {
       }
       } else if input == 3 {
           println!("Number of logical cores is {}", num_cpus::get());
+      } else if input == 4 {
+        server::a_webpage();
       }
     }
     
