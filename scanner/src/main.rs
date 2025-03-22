@@ -4,7 +4,6 @@ mod client;
 pub use client::client_stream;
 mod server;
 pub use server::server;
-use tokio::time::error;
 
 
 
@@ -38,6 +37,8 @@ fn main() {
         io::stdin().read_line(&mut client_msg);
         stream.write(client_msg.as_bytes()).unwrap();
       }
+      } else if input == 3 {
+          println!("Number of logical cores is {}", num_cpus::get());
       }
     }
     
