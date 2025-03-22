@@ -4,6 +4,7 @@ mod client;
 pub use client::client_stream;
 mod server;
 pub use server::server;
+use tokio::time::error;
 
 
 
@@ -30,15 +31,16 @@ fn main() {
   if input == 1 {
     server::server();
   } else if input == 2 {
-    println!("Enter msg: ");
-    let mut client_msg = String::new();
-    let buf = [0; 1024];
-    io::stdin().read_line(&mut client_msg);
-    let write = TcpStream::connect("127.0.0.1:8080").unwrap().write_all(&buf);
-    TcpListener::bind("127.0.0.1:8080").unwrap().incoming();
+      if let Ok(mut stream) = TcpStream::connect("127.0.0.1:8080") {
+        println!("Enter msg: ");
+        let mut client_msg = String::new();
+        let mut buf = [0; 1024];
+        io::stdin().read_line(&mut client_msg);
+        stream.write(client_msg.as_bytes()).unwrap();
+      }
+      }
+    }
     
-    println!("MSG SENT: {:?}", write); 
+    
     
     // client::client_stream();
-  }
-}
