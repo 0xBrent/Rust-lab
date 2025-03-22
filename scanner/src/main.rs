@@ -23,21 +23,22 @@ pub fn client_function() {
 }
 
 fn main() {
-    let mut input = String::new();
-
-  println!("Enter: ");
-  match io::stdin().read_line(&mut input) {
-    Ok((_input)) => {
-        server::server();
-        client::client_stream();
-        println!("tcp started on 8080")
-    }
-    Err(e) => {
-      println!("Error with input try again {}", e);
-      
-    }
-    _ => {
-      println!("Unexpected.")
-    }
+  let mut input_int = String::new();
+  println!("Enter option:");
+  io::stdin().read_line(&mut input_int);
+  let input:u32 = input_int.trim().parse().expect("Please type a number!");
+  if input == 1 {
+    server::server();
+  } else if input == 2 {
+    println!("Enter msg: ");
+    let mut client_msg = String::new();
+    let buf = [0; 1024];
+    io::stdin().read_line(&mut client_msg);
+    let write = TcpStream::connect("127.0.0.1:8080").unwrap().write_all(&buf);
+    TcpListener::bind("127.0.0.1:8080").unwrap().incoming();
+    
+    println!("MSG SENT: {:?}", write); 
+    
+    // client::client_stream();
   }
 }
