@@ -1,31 +1,26 @@
 use std::net::{TcpListener,TcpStream};
 use std::io::*;
+use axum::{extract, Json};
 use axum::routing::post;
 use tokio::*;
 use axum::{Router, response::Form, routing::get};
 use serde::Deserialize;
-
-#[derive(Deserialize)]
-struct Login {
-  email: String,
-  passphrase: String,
-}
 
 #[tokio::main]
 pub async fn a_webpage() {
   // application with single route
   let app = axum::Router::new()
     .route("/home", get(|| async {"Rustacean typ shi"}))
-    .route("/", get(|| async {"Hello, Root"})
-    .route("/login", get(login_form(form))));
+    .route("/", get(|| async {"Hello, Root"})) 
+    .route("/json", get(json_data));
   // LISTENER
   let listener = tokio::net::TcpListener::bind("127.0.0.1:8080").await.unwrap();
   axum::serve(listener, app).await.unwrap();
   
 }
 
-async fn login_form(Form(login): Form<login>) {
-
+async fn json_data() -> Json<Vec<String>> {
+  Json(vec!["Hello".to_owned(), "Rustacean".to_owned()])
 
 }
 
