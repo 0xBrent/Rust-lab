@@ -31,7 +31,12 @@ fn main() {
     _cpu_count: u32,
     _axum_webserver: u32,
   }
-  let main_menu = Menu { _tcp_listener: 1, _tcp_connect: 2, _cpu_count: 3, _axum_webserver: 4};
+  let main_menu = Menu { 
+    _tcp_listener: 1, 
+    _tcp_connect: 2, 
+    _cpu_count: 3, 
+    _axum_webserver: 4
+  };
   
 // print menu options and get user input
   println!("{:#?}", main_menu);
@@ -40,7 +45,6 @@ fn main() {
   io::stdin()
     .read_line(&mut input_int)
     .expect("INPUT ERROR");
-
   let input:u32 = input_int.trim().parse().expect("Please type a number!");
   // Options
   if input == 1 {
@@ -51,8 +55,12 @@ fn main() {
         println!("Enter msg to send to localhost:8080");
         let mut client_msg = String::new();
         let _buf = [0; 1024];
-        io::stdin().read_line(&mut client_msg).expect("INPUT ERROR");
-        stream.write(client_msg.as_bytes()).unwrap();
+        io::stdin()
+          .read_line(&mut client_msg)
+          .expect("INPUT ERROR");
+        stream
+          .write(client_msg.as_bytes())
+          .unwrap();
       }
       } else if input == 3 {
           println!("Expiriment using num_cpus crate");
