@@ -26,16 +26,16 @@ fn main() {
   // Define menu options
   #[derive(Debug)]
   struct Menu { 
-    _tcp_listener: u32,
-    _tcp_connect: u32,
-    _cpu_count: u32,
-    _axum_webserver: u32,
+    tcp_listener: u32,
+    tcp_connect: u32,
+    cpu_count: u32,
+    axum_webserver: u32,
   }
   let main_menu = Menu { 
-    _tcp_listener: 1, 
-    _tcp_connect: 2, 
-    _cpu_count: 3, 
-    _axum_webserver: 4
+    tcp_listener: 1, 
+    tcp_connect: 2, 
+    cpu_count: 3, 
+    axum_webserver: 4
   };
   
 // print menu options and get user input
