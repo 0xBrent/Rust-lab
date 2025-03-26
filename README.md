@@ -1,2 +1,3 @@
-Get ready to oxidize this is all Rust...
-This project is loosley built around the final project in The Rust Programming Language book.
+fn main() {
+println!(Rust lab🦀🦀);
+}
