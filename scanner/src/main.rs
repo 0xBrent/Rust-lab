@@ -1,11 +1,10 @@
-use std::net::{TcpListener,TcpStream};
-use std::io::{self, stdout, Read, Write};
+use std::net::TcpStream;
+use std::io::{self, Read, Write};
 mod client;
 use clap::arg;
 pub use client::client_stream;
 mod server;
 pub use server::server;
-use clap::{Arg, Command, builder::PathBufValueParser};
 
 
 

@@ -1,4 +1,4 @@
-use std::{io::{stdin, Read, Write}, net::TcpStream};
+use std::{io::{stdin, Write}, net::TcpStream};
 
 pub fn client_stream() {
   if let Ok(mut stream) = TcpStream::connect("127.0.0.1:8080") {

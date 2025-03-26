@@ -1,20 +1,9 @@
-use std::fmt::Debug;
 use std::net::{SocketAddr, TcpListener, TcpStream};
 use std::io::*;
-use std::ptr::addr_of;
-use axum::{extract, Json, ServiceExt};
-use axum::routing::{post, trace};
-use tokio::*;
-use axum::{body::Bytes,extract::{MatchedPath, ConnectInfo},
-  http::{HeaderMap, Request},
-  response::{Html, Response},
-  routing::get,
-  Router};
-use serde::Deserialize;
-use tower_http::{classify::ServerErrorsFailureClass, trace::{TraceLayer, DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse}};
-use tracing::{debug_span, info_span, Span, instrument, Level};
-use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-use tracing_subscriber::fmt::layer;
+use axum::{Json, ServiceExt};
+use axum::{extract::ConnectInfo,
+  routing::get};
+use tower_http::trace::TraceLayer;
 
 #[tokio::main]
 pub async fn a_webpage() {
