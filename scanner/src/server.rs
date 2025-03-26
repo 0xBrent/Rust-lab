@@ -47,7 +47,7 @@ async fn json_data() -> Json<Vec<String>> {
 
 pub fn server() {
   let site = TcpListener::bind("127.0.0.1:8080").unwrap();
-  let mut buf = [0; 1024];
+  let mut buf = [0; 100];
   let mut read_client = 0;
   for stream in site.incoming() {
     let mut stream: TcpStream = stream.unwrap();
