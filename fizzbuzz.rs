@@ -1,8 +1,12 @@
+// If i is divisible by 3, return the String "Fizz"
+// If i is divisible by 5, return the String "Buzz"
+// If i is divisible by both 3 and 5, return the String "FizzBuzz"
+// If neither of them is true return the number as a String
+
 use std::ops::RangeInclusive;
 
 fn main() {
     let range = 1..=100;
-
     println!("{}", fizzbuzz(range))
 }
 
