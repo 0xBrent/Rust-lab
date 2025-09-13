@@ -10,13 +10,13 @@ fn main() {
     println!("{}", fizzbuzz(range))
 }
 
-fn fizzbuzz(num: RangeInclusive<i32>) -> String {
-    num.into_iter()
-        .map(|num| match num {
-            num if num % 3 == 0 && num % 5 == 0 => "\nfizzbuzz".to_string(),
-            num if num % 3 == 0 => "\nfizz".to_string(),
-            num if num % 5 == 0 => "\nbuzz".to_string(),
-            _ => format!("\n{}", num),
+fn fizzbuzz(i: RangeInclusive<i32>) -> String {
+    i.into_iter()
+        .map(|i| match i {
+            i if i % 3 == 0 && i % 5 == 0 => "\nfizzbuzz".to_string(),
+            i if i % 3 == 0 => "\nfizz".to_string(),
+            i if i % 5 == 0 => "\nbuzz".to_string(),
+            _ => format!("\n{}", i),
         })
         .collect::<String>()
 }
