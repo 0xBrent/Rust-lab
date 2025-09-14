@@ -18,7 +18,7 @@ fn fizzbuzz(i: RangeInclusive<i32>) -> String {
             i if i % 5 == 0 => "\nbuzz".to_string(),
             _ => format!("\n{}", i),
         })
-        .collect::<String>()
+        .collect()
 }
 
 fn fizzbuzz_tuple(i: RangeInclusive<i32>) -> String {
